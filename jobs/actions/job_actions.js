@@ -13,7 +13,7 @@ const JOB_QUERY_PARAMS = {
   v: '2',
   latlong: 1,
   radius: 10,
-  q: 'javascript'
+  q: 'front end developer'
 };
 
 const buildJobsUrl = (zip) => {
