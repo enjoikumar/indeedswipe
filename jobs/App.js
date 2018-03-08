@@ -14,7 +14,7 @@ import ReviewScreen from './screens/ReviewScreen'
 
 export default class App extends React.Component {
   render() {
-    const MainNavigator = TabNavigator({
+    const MainNavigator = TabNavigator({  //when this renders it instantly renders all the screens by default. 
       welcome: { screen: WelcomeScreen },
       auth: { screen: AuthScreen },
       main: {
@@ -29,6 +29,11 @@ export default class App extends React.Component {
           }
         })
       }
+    }, {
+      navigationOptions: {
+        tabBarVisible: false //removing the tab bar at the bottom
+      },
+      lazyLoad: true //so the pages render only when you navigate to specific pages 
     });
 
     return (

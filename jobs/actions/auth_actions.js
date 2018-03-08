@@ -10,7 +10,7 @@ import {
 
 
 
-export const facebookLogin = () => async dispatch => {
+export const facebookLogin = () => async dispatch => {  //facebook login component
 	let token = await AsyncStorage.getItem('fb_token');
 
 	if (token) {
@@ -23,12 +23,12 @@ export const facebookLogin = () => async dispatch => {
 }
 
 const doFacebookLogin = async dispatch => {
-	let { type, token } = await Facebook.logInWithReadPermissionsAsync('1667680913289362', {
+	let { type, token } = await Facebook.logInWithReadPermissionsAsync('1667680913289362', { //calling the facebook api
 		permissions: ['public_profile']
 	});
 
 	if (type === 'cancel') {
-		return dispatch({ type: FACEBOOK_LOGIN_FAIL});
+		return dispatch({ type: FACEBOOK_LOGIN_FAIL}); //iniates facebook faile
 	}
 
 	await AsyncStorage.setItem('fb_token', token);
