@@ -15,7 +15,8 @@ const SWIPE_OUT_DURATION = 250; //time wit takes to swipe
 class Deck extends Component {
 	static defaultProps = {
 		onSwipeRight: () => {},
-		onSwipeLeft: () => {}
+		onSwipeLeft: () => {},
+		keyProp: 'id'
 	};
 
 	constructor(props) {
@@ -99,7 +100,7 @@ class Deck extends Component {
 			if (i === this.state.index) {
 				return (
 					<Animated.View
-						key = {item.id}
+						key = {item[this.props.keyProp]}
 						style = {[this.getCardStyle(), styles.cardStyle]}
 						{...this.state.panResponder.panHandlers}
 						>
@@ -110,7 +111,7 @@ class Deck extends Component {
 
 			return (
 				<Animated.View 
-					key = {item.id} 
+					key = {item[this.props.keyProp]} 
 					style = {[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: -1 }]}  //card stack up behind each other
 					>
 					{this.props.renderCard(item)}
@@ -118,7 +119,7 @@ class Deck extends Component {
 				);
 		})
 
-	return Platform.OS == 'android' ? deck : deck.reverse();
+	return Platform.OS == 'android' ? deck : deck.reverse(); //make it android compatible
 	}
 
 	render() {
