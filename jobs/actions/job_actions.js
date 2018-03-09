@@ -17,8 +17,8 @@ const JOB_QUERY_PARAMS = {
 };
 
 const buildJobsUrl = (zip) => {
-	const query = qs.stringify({...JOB_QUERY_PARAMS, l: zip });
-	return `${JOB_ROOT_URL}${query}`;
+  const query = qs.stringify({...JOB_QUERY_PARAMS, l: zip });
+  return `${JOB_ROOT_URL}${query}`;
 };
 
 export const fetchJobs = (region, callback) => async (dispatch) => {
@@ -32,11 +32,4 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
   } catch(e) {
     console.error(e);
   }
-}; 
-       
-
-
-
-
-
-
+};

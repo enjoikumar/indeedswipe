@@ -12,7 +12,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;  //global variables: this w
 const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH; //the swipe is a quarter of the screen width
 const SWIPE_OUT_DURATION = 250; //time wit takes to swipe
 
-class Swipe extends Component {
+class Deck extends Component {
 	static defaultProps = {
 		onSwipeRight: () => {},
 		onSwipeLeft: () => {}
@@ -135,6 +135,4 @@ const styles = {
 	}
 };
 
-export default Swipe;
-
-
+export default Deck;
