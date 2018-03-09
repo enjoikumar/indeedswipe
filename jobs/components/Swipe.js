@@ -5,7 +5,7 @@ import {
 	PanResponder,
 	Dimensions,
 	LayoutAnimation,
-	UIManager
+	UIManager, Platform
 	} from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;  //global variables: this will get the entire screen width
@@ -93,7 +93,7 @@ class Deck extends Component {
 			return this.props.renderNoMoreCards();
 		}
 
-		return this.props.data.map((item, i) => {
+		const deck = this.props.data.map((item, i) => {
 			if ( i < this.state.index ) {return null}
 
 			if (i === this.state.index) {
@@ -111,12 +111,14 @@ class Deck extends Component {
 			return (
 				<Animated.View 
 					key = {item.id} 
-					style = {[styles.cardStyle, { top: 10 * (i - this.state.index) }]}  //card stack up behind each other
+					style = {[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: -1 }]}  //card stack up behind each other
 					>
 					{this.props.renderCard(item)}
 				</Animated.View>
 				);
-		}).reverse();
+		})
+
+	return Platform.OS == 'android' ? deck : deck.reverse();
 	}
 
 	render() {
