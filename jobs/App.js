@@ -17,7 +17,7 @@ export default class App extends React.Component {
     const MainNavigator = TabNavigator({  //when this renders it instantly renders all the screens by default. 
       welcome: { screen: WelcomeScreen },
       auth: { screen: AuthScreen },
-      main: {
+      main: { //second navigation, like item1, item2 >itemA itemB, item3
         screen: TabNavigator({
           map: { screen: MapScreen },
           deck: { screen: DeckScreen },
@@ -36,15 +36,15 @@ export default class App extends React.Component {
       lazyLoad: true //so the pages render only when you navigate to specific pages 
     });
 
-    return (
-      <Provider store = {store}>
+    return (  //adding the middleware and adding styles
+      <Provider store = {store}>  
         <View style = {styles.container}>
           <MainNavigator />
         </View>
       </Provider>
     );
   }
-}
+} 
 
 const styles = StyleSheet.create({
   container: {

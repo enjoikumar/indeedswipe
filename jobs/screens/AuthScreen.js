@@ -16,13 +16,13 @@ class AuthScreen extends Component { //going to look at our props object and if 
 
 	onAuthComplete(props) {
 		if (props.token) {
-			this.props.navigation.navigate('map');
+			this.props.navigation.navigate('map'); //if there is a token it will render the map screen
 		}
 	}
 
-	render() {
+	render() { // dummy screen will change to an error page or try to redirect the user to autscreen
 		return (
-			<View>
+			<View> 
 				<Text>AuthScreen</Text>
 				<Text>AuthScreen</Text>
 				<Text>AuthScreen</Text>

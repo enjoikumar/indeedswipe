@@ -6,29 +6,29 @@ import {
   LIKE_JOB
 } from './types';
 
-const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
+const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?'; //the api parameters
 const JOB_QUERY_PARAMS = {
-  publisher: '4201738803816157',
+  publisher: '4201738803816157', //api key
   format: 'json',
   v: '2',
   latlong: 1,
   radius: 10,
-  q: 'front end developer'
+  q: 'front end developer' //the search query, Maybe make user based query
 };
 
 const buildJobsUrl = (zip) => {
-  const query = qs.stringify({...JOB_QUERY_PARAMS, l: zip });
+  const query = qs.stringify({...JOB_QUERY_PARAMS, l: zip }); //compiles the api 
   return `${JOB_ROOT_URL}${query}`;
 };
 
-export const fetchJobs = (region, callback) => async (dispatch) => {
+export const fetchJobs = (region, callback) => async (dispatch) => { //fetches the job in the region
   try {
-    let zip = await reverseGeocode(region);
+    let zip = await reverseGeocode(region); //turns the lat/lng to a zip
     const url = buildJobsUrl(zip);
     let { data } = await axios.get(url); //get that list of jobs and return a respond jobs data
     dispatch({ type: FETCH_JOBS, payload: data });
     callback();
-    console.log(data)
+    console.log(data) //able to see the job data on the console
   } catch(e) {
     console.error(e);
   }

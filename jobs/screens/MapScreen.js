@@ -6,7 +6,7 @@ import { Button, Icon } from 'react-native-elements';
 
 import * as actions from '../actions';
 
-class MapScreen extends Component {
+class MapScreen extends Component {  //the map will not be shown until the map is loaded
   state = {
     mapLoaded: false,
     region: {
@@ -18,21 +18,21 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    this.setState({ mapLoaded: true });
+    this.setState({ mapLoaded: true });  //the map will be shown
   }
 
-  onRegionChangeComplete = (region) => {
-    this.setState({ region });
+  onRegionChangeComplete = (region) => {  //when the user is done changing the map location the region changes
+    this.setState({ region }); 
   }
 
   onButtonPress = () => {
-    this.props.fetchJobs(this.state.region, () => {
+    this.props.fetchJobs(this.state.region, () => {  //onpress the indeed api gets front end dev jobs in that area
       this.props.navigation.navigate('deck');
     });
   }
 
   render() {
-    if (!this.state.mapLoaded) {
+    if (!this.state.mapLoaded) { //when map is true render this
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
