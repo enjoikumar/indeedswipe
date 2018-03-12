@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, ScrollView, Linking } from 'react-native';
 import { navigation, screenProps } from 'react-navigation';
-import { Button, Card } from 'react-native-elements';
+import { Button, Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
 
@@ -9,7 +9,10 @@ import { MapView } from 'expo';
 class ReviewScreen extends Component {  //review screen where liked jobs by the user are stored
 	static navigationOptions = ({ navigation }) => {
 	 	return {
-     title: 'Review Jobs', //just the title and 
+     title: 'Review Jobs', //just the title and
+     tabBarIcon:({ tintColor }) => {
+      return <Icon name="favorite" size={30} color={tintColor}/>
+      }, 
      headerRight: (
        <Button 
          title='Settings' 
