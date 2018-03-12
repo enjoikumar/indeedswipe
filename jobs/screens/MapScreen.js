@@ -10,10 +10,10 @@ class MapScreen extends Component {  //the map will not be shown until the map i
   state = {
     mapLoaded: false,
     region: {
-      longitude: -122,
-      latitude: 37,
-      longitudeDelta: 0.04,
-      latitudeDelta: 0.09
+      "latitude": 40.80330997024359,
+      "latitudeDelta": 0.5482394756968034,
+      "longitude": -73.85496856041367,
+      "longitudeDelta": 0.454181483722536,
     }
   }
 

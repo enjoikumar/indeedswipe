@@ -3,6 +3,7 @@ import { View, Text, Platform, ScrollView, Linking } from 'react-native';
 import { navigation, screenProps } from 'react-navigation';
 import { Button, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { MapView } from 'expo';
 
 
 class ReviewScreen extends Component {  //review screen where liked jobs by the user are stored
@@ -25,11 +26,23 @@ class ReviewScreen extends Component {  //review screen where liked jobs by the 
 
  renderLikedJobs() { //the liked jobs will show a map, the time the job has since been posted and a url
   return this.props.likedJobs.map(job => {
-    const { company, formattedRelativeTime, url } = job;
+    const { company, formattedRelativeTime, url, longitude, latitude, jobkey, jobtitle } = job;
+    const initialRegion = {
+      longitude,
+      latitude,
+      longitudeDelta: 0.02,
+      latitudeDelta: 0.045
+    };
 
     return(
-      <Card>
+      <Card title={jobtitle} key={jobkey}>
         <View style={{ height: 200}}>
+          <MapView 
+          style={{ flex: 1 }}
+          cacheEnabled={Platform.OS === 'android'} 
+          scrollEnabled={false}
+          initialRegion={initialRegion}
+        />
           <View style={styles.detailWrapper}>
             <Text style={styles.italics}>{company}</Text>
             <Text style={styles.italics}>{formattedRelativeTime}</Text>       
