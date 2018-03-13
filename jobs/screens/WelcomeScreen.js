@@ -5,9 +5,9 @@ import { AppLoading } from 'expo';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [  //when the use first uses the app, these are the screens that are gonna show up
-	{ text: 'Welcome To Job App', color: '#03A9F4' },
-	{ text: 'Use this to get a job', color: '#009688' },
-	{ text: 'Set your location, then swipe away', color: '#03A9F4' }
+	{ text: 'Welcome To The Front End Job App', color: '#03A9F4' },
+	{ text: 'Use this to get a Front End Position', color: '#009688' },
+	{ text: 'Find your location, then swipe away', color: '#03A9F4' }
 ];
 
 class WelcomeScreen extends Component {
